@@ -1,38 +1,34 @@
-import { View, Text, SafeAreaView } from "react-native";
-import React from "react";
-import { Link, Slot, usePathname, useRouter } from "expo-router";
-import "../global.css";
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { Tabs } from 'expo-router';
 
 export default function _layout() {
-    
-    const pathname = usePathname();
-   
   return (
-    <SafeAreaView>
-      <View className="bg-blue-300 h-[90%] p-2">
-        <Slot />
-      </View>
-      <View className="bg-red-700 p-4 flex flex-row justify-around items-center fixed bottom-0 w-full">
-      <Link 
-        href={"/accounts"} 
-        className={pathname === "/accounts" ? "bg-blue-500 text-white" : "text-white"}
-      >
-        <Text className="text-white">Accounts</Text>
-      </Link>
-      <Link 
-        href={"/"} 
-        className={pathname === "/" ? "bg-blue-500 text-white" : "text-white"}
-      >
-        <Text className="text-white">For You</Text>
-      </Link>
-      <Link 
-        href={"/explore"} 
-        className={pathname === "/explore" ? "bg-blue-500 text-white" : "text-white"}
-      >
-        <Text className="text-white">Explore</Text>
-      </Link>
-    </View>
 
-    </SafeAreaView>
+
+    //! initially below there was just two tabs.Screen still it was showing 3 tabs in the bottom of our app. because we have file based routing
+    <Tabs screenOptions={{ tabBarActiveTintColor: 'blue' , headerShown: false }}>
+      <Tabs.Screen
+        name="index"            // ! this name is the name of the file. so it should be same as the file name. if we change the name of the file then we have to change the name here also
+        options={{
+          title: 'For You',
+        //   href: null,            //! if we want to disable the navigation to this tab. we can use href: null. by this we can disable the navigation to this tab
+          tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="account"
+        options={{
+          title: 'Account',
+          tabBarIcon: ({ color }) => <FontAwesome size={28} name="cog" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="explore"
+        options={{
+          title: 'Explore',
+          tabBarIcon: ({ color }) => <FontAwesome size={28} name="cog" color={color} />,
+        }}
+      />
+    </Tabs>
   );
 }
