@@ -1,26 +1,37 @@
-import { View, Text, Button, SafeAreaView } from "react-native";
-import React, { useState, useEffect } from "react";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { SafeAreaView, Text, View } from "react-native";
 
-const index = () => {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    let interval = setInterval(() => {
-      setCount((count) => count + 1);
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+const Tab = createMaterialTopTabNavigator();
+
+export default function Foryou() {
   return (
-    <SafeAreaView>
-      <View>
-        <Text>
-          this is a index page which will be a for you page and it will be
-          default page
-        </Text>
-      </View>
-    </SafeAreaView>
+    <Tab.Navigator>
+      <Tab.Screen name="Library" component={Library} />
+      <Tab.Screen name="Liked" component={Liked} />
+      <Tab.Screen name="Suggested" component={Suggested} />
+    </Tab.Navigator>
   );
-};
+}
 
-export default index;
+function Library() {
+  return (
+    <View>
+      <Text>This is Home</Text>
+    </View>
+  );
+}
+
+function Liked() {
+  return (
+    <View>
+      <Text>This is Profile </Text>
+    </View>
+  );
+}
+function Suggested() {
+  return (
+    <View>
+      <Text>This is Suggested </Text>
+    </View>
+  );
+}
