@@ -1,10 +1,13 @@
 import { Text, SafeAreaView, Button, View } from "react-native";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import BottomSheetComponent from "@/components/BottomSheetComponent";
 
 export default function account() {
   const [pictureopen, SetPictureOpen] = useState(false);
-``
+
+  const handleClose=useCallback(()=>{
+    SetPictureOpen(false);
+  },[])
   return (
     // here flex-1 is used to make the view take the whole screen
     <SafeAreaView className="flex-1">     
@@ -12,8 +15,9 @@ export default function account() {
       <View className="flex-1 ">
 
       <Text>account</Text>
-      <Button title="Open bottom sheet" onPress={() => SetPictureOpen(!pictureopen)} ></Button>
-      {pictureopen && <BottomSheetComponent/>}
+      <Button title="Open bottom sheet" onPress={() => SetPictureOpen(true)} ></Button>
+      {/* {pictureopen && <BottomSheetComponent onClose={()=> SetPictureOpen(false)}/>} */}
+      {pictureopen && <BottomSheetComponent handleClose={handleClose}/>}
       </View>
     </SafeAreaView>
   );
