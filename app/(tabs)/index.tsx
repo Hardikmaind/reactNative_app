@@ -1,37 +1,51 @@
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { SafeAreaView, Text, View } from "react-native";
+import { View, Text, Image ,StyleSheet} from "react-native";
+import React from "react";
+import { Link } from "expo-router";
+import ParallaxScrollView from "@/components/ParallaxScrollView";
+import { SafeAreaView } from "react-native-safe-area-context";
+import ImageCard from "@/components/ImageCard";
+import { useWallpaper, Wallpaper } from "@/hooks/useWallpaper";
 
-const Tab = createMaterialTopTabNavigator();
-
-export default function Foryou() {
+export default function explore() {
+  const wallpapers=useWallpaper();
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Library" component={Library} />
-      <Tab.Screen name="Liked" component={Liked} />
-      <Tab.Screen name="Suggested" component={Suggested} />
-    </Tab.Navigator>
+    <SafeAreaView style={{ flex: 1 }}>
+     <ParallaxScrollView  headerImage={<Image style={{ flex: 1}} source={{ uri: wallpapers[0].url }}/>}  headerBackgroundColor={{dark: "black",light: "white"}}  >
+      {wallpapers.map((wallpaper:Wallpaper) => {
+        return (
+          <Link key={wallpaper.id} href="/(popupSelectWallpaper)/wallpaper">
+            <View style={styles.container}>
+              <View style={styles.innerContainer}>
+                  <ImageCard wallpaper={wallpaper} />
+              </View>
+              <View style={styles.innerContainer}>
+                  <ImageCard wallpaper={wallpaper} />
+              </View>
+            </View>
+          </Link>
+        );
+      })}
+
+
+     </ParallaxScrollView>
+    </SafeAreaView>
   );
 }
 
-function Library() {
-  return (
-    <View>
-      <Text>This is Home</Text>
-    </View>
-  );
-}
 
-function Liked() {
-  return (
-    <View>
-      <Text>This is Profile </Text>
-    </View>
-  );
-}
-function Suggested() {
-  return (
-    <View>
-      <Text>This is Suggested </Text>
-    </View>
-  );
-}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    
+  },
+  innerContainer: {
+      flex:1,
+      paddingHorizontal: 5,
+      borderRadius: 20,
+  }
+
+  
+  
+})
