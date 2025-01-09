@@ -9,21 +9,21 @@ export function useWallpaper(): Wallpaper[] {
     {
       id: 1,
       url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
-      title: "Wallpaper 1",
+      title: "Wallpaper",
     },
     {
       id: 2,
-      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      url: "https://ideogram.ai/assets/image/lossless/response/pgdbgVJXRfq9MqIoODtpNw",
       title: "Wallpaper 2",
     },
     {
       id: 3,
-      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      url: "https://ideogram.ai/assets/progressive-image/balanced/response/VoEXoLnkQYWbNL18xXlXjw",
       title: "Wallpaper 2",
     },
     {
       id: 4,
-      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      url: "https://ideogram.ai/assets/progressive-image/balanced/response/78ldoir0SFihnkhjRjqjbA",
       title: "Wallpaper 2",
     },
     {
@@ -33,7 +33,7 @@ export function useWallpaper(): Wallpaper[] {
     },
     {
       id: 6,
-      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      url: "https://ideogram.ai/assets/progressive-image/balanced/response/78ldoir0SFihnkhjRjqjbA",
       title: "Wallpaper 2",
     },
     {
@@ -43,7 +43,7 @@ export function useWallpaper(): Wallpaper[] {
     },
     {
       id: 8,
-      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      url: "https://ideogram.ai/assets/progressive-image/balanced/response/78ldoir0SFihnkhjRjqjbA",
       title: "Wallpaper 2",
     },
     {
@@ -53,17 +53,17 @@ export function useWallpaper(): Wallpaper[] {
     },
     {
       id: 10,
-      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      url: "https://ideogram.ai/assets/progressive-image/balanced/response/78ldoir0SFihnkhjRjqjbA",
       title: "Wallpaper 2",
     },
     {
       id: 11,
-      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      url: "https://ideogram.ai/assets/progressive-image/balanced/response/VoEXoLnkQYWbNL18xXlXjw",
       title: "Wallpaper 2",
     },
     {
       id: 12,
-      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      url: "https://ideogram.ai/assets/progressive-image/balanced/response/78ldoir0SFihnkhjRjqjbA",
       title: "Wallpaper 2",
     },
     {
@@ -78,7 +78,7 @@ export function useWallpaper(): Wallpaper[] {
     },
     {
       id: 15,
-      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      url: "https://ideogram.ai/assets/progressive-image/balanced/response/VoEXoLnkQYWbNL18xXlXjw",
       title: "Wallpaper 2",
     },
     {
@@ -93,7 +93,7 @@ export function useWallpaper(): Wallpaper[] {
     },
     {
       id: 18,
-      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      url: "https://ideogram.ai/assets/progressive-image/balanced/response/VoEXoLnkQYWbNL18xXlXjw",
       title: "Wallpaper 2",
     },
     {
