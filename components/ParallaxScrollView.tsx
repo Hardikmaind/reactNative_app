@@ -78,8 +78,9 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 32, // Adjust radius as needed
     borderTopRightRadius: 32, // Adjust radius as needed
     flex: 1,
-    paddingTop: 32,
-    paddingHorizontal: 16,
+    // paddingTop: 32,
+    // paddingHorizontal: 16,
+    padding:10,
     gap: 16,
     overflow: 'hidden',
   },

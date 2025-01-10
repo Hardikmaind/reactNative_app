@@ -1,15 +1,15 @@
-import { View, Text, Image,StyleSheet, useColorScheme } from "react-native";
+import { View, Text, Image,StyleSheet, useColorScheme, Pressable } from "react-native";
 import React from "react";
 import { Wallpaper } from "@/hooks/useWallpaper";
 import { ThemedText } from "./ThemedText";
 import { Colors } from '@/constants/Colors';
 import { Ionicons } from "@expo/vector-icons";
 
-export default function ImageCard({ wallpaper }: { wallpaper: Wallpaper }) {
+export default function ImageCard({ wallpaper ,onPress}: { wallpaper: Wallpaper,onPress:(item:Wallpaper)=>void }) {
    const theme = useColorScheme() ?? 'light';
    const styles = createStyles(theme);
   return (
-    <View style={{ marginVertical: 5 }}>
+    <Pressable onPress={()=>onPress(wallpaper)} style={{ marginVertical: 5 }}>
       <Image
         source={{ uri: wallpaper.url }}
         style={styles.image}
@@ -17,15 +17,18 @@ export default function ImageCard({ wallpaper }: { wallpaper: Wallpaper }) {
       <View style={styles.labelcontainer}>
 
       <ThemedText style={styles.label}>{wallpaper.title}</ThemedText>
-      <Ionicons style={styles.iconStyle}
+      <View style={styles.iconStyle}>
+
+      <Ionicons 
                 name="heart"
                 size={24}
                 weight="medium"
                 color={theme === 'light' ? Colors.light.icon : Colors.dark.icon}
                 
-              />
+                />
       </View>
-    </View>
+                </View>
+    </Pressable>
   );
 }
 
@@ -35,6 +38,9 @@ const createStyles=(theme: 'light' | 'dark')=>StyleSheet.create({
   iconStyle:{
     marginRight:10,
     marginBottom:2,
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
   }
   ,
   image:{

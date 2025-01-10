@@ -101,5 +101,50 @@ export function useWallpaper(): Wallpaper[] {
       url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
       title: "Wallpaper 2",
     },
+    {
+      id: 19,
+      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      title: "Wallpaper 2",
+    },
+    {
+      id: 19,
+      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      title: "Wallpaper 2",
+    },
+    {
+      id: 19,
+      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      title: "Wallpaper 2",
+    },
+    {
+      id: 19,
+      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      title: "Wallpaper 2",
+    },
+    {
+      id: 19,
+      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      title: "Wallpaper 2",
+    },
+    {
+      id: 19,
+      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      title: "Wallpaper 2",
+    },
+    {
+      id: 19,
+      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      title: "Wallpaper 2",
+    },
+    {
+      id: 19,
+      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      title: "Wallpaper 2",
+    },
+    {
+      id: 19,
+      url: "https://ideogram.ai/assets/image/lossless/response/4rPreaS7TV-Cx2gF2Eij_A",
+      title: "Wallpaper 2",
+    },
   ];
 }

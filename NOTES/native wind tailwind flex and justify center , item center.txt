@@ -1,0 +1,3 @@
+In react native justify center aligns the iterms in vertically center.
+and item center ,centers the item in horizontal dirction.
+this is opposite to what it is in react. because default flex direction in react native is column unlike row in react web
