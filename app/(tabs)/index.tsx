@@ -37,7 +37,7 @@ export default function explore() {
           </ThemedView>
         </ThemedView>
       </ParallaxScrollView>
-      {selectedwallpaper && <BottomSheetComponent handleClose ={()=>setSelectedWallpaper(null)}/>}
+      {selectedwallpaper && <BottomSheetComponent image={selectedwallpaper}  handleClose ={()=>setSelectedWallpaper(null)}/>}
     </SafeAreaView>
   );
 }

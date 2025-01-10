@@ -17,7 +17,7 @@ export default function account() {
       <Text>account</Text>
       <Button title="Open bottom sheet" onPress={() => SetPictureOpen(true)} ></Button>
       {/* {pictureopen && <BottomSheetComponent onClose={()=> SetPictureOpen(false)}/>} */}
-      {pictureopen && <BottomSheetComponent handleClose={handleClose}/>}
+      {/* {pictureopen && <BottomSheetComponent  handleClose={handleClose}/>} */}
       </View>
     </SafeAreaView>
   );
