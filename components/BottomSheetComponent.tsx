@@ -27,11 +27,12 @@ export default function BottomSheetComponent({handleClose,image}:{handleClose :(
         enableHandlePanningGesture={true}
         onClose={handleClose}     
         // handleClose is the callback which will be called when the bottom sheet is closed. i have defined this in the parent component i.e in the account.tsx file
-        handleIndicatorStyle={{height:0}}       //! here i have removed the indicator
-        handleStyle={{height:0}}                //! here i have removed the handle}}
+        handleIndicatorStyle={{display:"none"}}       //! here i have removed the indicator
+        handleStyle={{display:"none"}}                //! here i have removed the handle}}
+        style={{ borderRadius: 20,overflow:"hidden"}}  //! here i have added the borderRadius and overflow hidden to the bottom sheet}}
         >
-        <BottomSheetView style={styles.container}>
-          <Image style={{flex:1}} source={{uri:image.url}}/>
+        <BottomSheetView style={styles.contentContainer}>
+          <Image style={styles.image} source={{uri:image.url}}/>
           <Button color="#841584"  title="Download"></Button>
         </BottomSheetView>
       </BottomSheet>
@@ -40,10 +41,22 @@ export default function BottomSheetComponent({handleClose,image}:{handleClose :(
 
 const styles = StyleSheet.create({
 container:{
-  flex:1,
+  borderTopRightRadius:20,
+  borderTopLeftRadius:20,
+  backgroundColor:"red",
 },
 
 contentContainer:{
   flex:1,
+  
+
+
+
+},
+image:{
+  height:"60%", 
+  borderTopRightRadius:20,
+  borderTopLeftRadius:20,
+  // resizeMode:"cover",
 }
 })
