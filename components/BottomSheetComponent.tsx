@@ -6,6 +6,7 @@ import { Wallpaper } from "@/hooks/useWallpaper";
 import { Button, Image, StyleSheet, useColorScheme, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
+import { ThemedText } from "./ThemedText";
 
 export default function BottomSheetComponent({
   handleClose,
@@ -20,8 +21,8 @@ export default function BottomSheetComponent({
   const handleSheetChanges = useCallback((index: number) => {
     console.log("handleSheetChanges", index);
   }, []);
-
-  const theme = useColorScheme();
+  const theme = useColorScheme()??'light';
+  const styles = createStyles(theme);
   return (
     <BottomSheet
       ref={bottomSheetRef}
@@ -52,12 +53,14 @@ export default function BottomSheetComponent({
               size={24}
               color={theme === "light" ? Colors.light.icon : Colors.dark.icon}
               onPress={handleClose}
+              style={{paddingRight:10}}
             />
             <Ionicons
               name={'share'}
               size={24}
               color={theme === "light" ? Colors.light.icon : Colors.dark.icon}
               onPress={handleClose}
+              style={{paddingRight:10}}
             />
           </View>
         </View>
@@ -69,15 +72,19 @@ export default function BottomSheetComponent({
 !Children Behavior:
     ?Children are still clipped as expected because overflow: "hidden" propagates to their rendering as well. This means any content that spills outside the bounds of the BottomSheet or the styled container will also be clipped.
 */
+        <View style={styles.textContainer}>
+
+        <ThemedText style={styles.text}>{image.title}</ThemedText>
+        </View>
         <View style={styles.buttonStyle}>
-          <Button  color="#2196F3" title="Download" onPress={handleClose}></Button>
+          <Button  color={"green"} title="Download" onPress={handleClose}></Button>
         </View>
       </BottomSheetView>
     </BottomSheet>
   );
 }
 
-const styles = StyleSheet.create({
+const createStyles=(theme: 'light' | 'dark')=>StyleSheet.create({
   container: {
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
@@ -87,16 +94,17 @@ const styles = StyleSheet.create({
 
   contentContainer: {
     flex: 1,
+    backgroundColor: theme === "light" ? Colors.light.background : Colors.dark.background,
   },
   buttonStyle: {
-    position: "absolute",
+    // position: "absolute",
     bottom: 0,
     width: "50%",
-    backgroundColor: "green",
+    marginTop: 20,
     alignSelf: "center",
 
     // borderRadius: 20,
-    //! Now like i have shown in the NOTES folder. here we have applied the borderRaius to the parent container. and when i apply the overflow hidden to the parent \//
+    //! Now like i have shown in the NOTES folder. here we have applied the borderRaius to the parent container. and when i apply the overflow hidden to the parent the children are also clipped. becuase the overflow hidden is applied to the parent container and it will clip the children as well. without overflow hidden the button will not be rounded even though the parent container is rounded. so basically overflow hidden  ensures that the children are also clipped to the rounded corners of the parent container. (overflow hidden enforeces the style of the parent container to the children as well)
     borderRadius: 20,
     overflow: "hidden",
     
@@ -105,8 +113,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     width: "100%",
-    
-    right: 0,
     position: "absolute",
     padding: 10,
     justifyContent: "space-between",
@@ -116,11 +122,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   image: {
-    height: "60%",
+    height: "70%",
     // borderTopRightRadius:20,
     // borderTopLeftRadius:20,
     resizeMode: "cover",
     borderRadius: 13,
+  },
+  textContainer:{
+    
+    width:"100%",
+
+  },
+  text:{
+      paddingTop:20,
+      textAlign:"center",
+    fontSize:30,
+      fontWeight:"bold",
+      color:theme === "light" ? Colors.light.text : Colors.dark.text
   },
 });
 
