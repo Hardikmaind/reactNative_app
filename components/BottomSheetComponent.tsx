@@ -73,17 +73,14 @@ export default function BottomSheetComponent({
             />
           </View>
         </View>
-        {/*     //! Now like i have shown in the NOTES folder. here we have applied the borderRaius to the parent container. and when i apply the overflow hidden to the parent  */}
-        // !Why It Feels Like the Container is Clipped: /* ? Unlike typical View
-        components, the BottomSheet is a higher-level component with multiple
-        internal layers. Your applied overflow: "hidden" styling influences the
-        container's visual boundaries. Since you’re working with a BottomSheet,
-        it handles internal layouts dynamically, and applying overflow: "hidden"
-        at the container level can create this behavior. !Children Behavior:
-        ?Children are still clipped as expected because overflow: "hidden"
-        propagates to their rendering as well. This means any content that
-        spills outside the bounds of the BottomSheet or the styled container
-        will also be clipped. */
+         {/*     //! Now like i have shown in the NOTES folder. here we have applied the borderRaius to the parent container. and when i apply the overflow hidden to the parent  */}
+         {/* // !Why It Feels Like the Container is Clipped: */}
+    {/* 
+    //? Unlike typical View components, the BottomSheet is a higher-level component with multiple internal layers. Your applied overflow: "hidden" styling influences the container's visual boundaries. Since you’re working with a BottomSheet, it handles internal layouts dynamically, and applying overflow: "hidden" at the container level can create this behavior.
+
+//!Children Behavior:
+    Children are still clipped as expected because overflow: "hidden" propagates to their rendering as well. This means any content that spills outside the bounds of the BottomSheet or the styled container will also be clipped.
+*/ }
         <View style={styles.textContainer}>
           <ThemedText style={styles.text}>{image.title}</ThemedText>
         </View>
@@ -125,10 +122,11 @@ const DownloadButton = () => {
               size={24}
               color={theme === "light" ? "white" : "white"}
               // onPress={handleClose}
+              style={{ marginBottom: 4 }}
             />
       <Text style={{ fontSize: 20, color: "white", fontWeight: "bold",}}>
-        {" "}
-        Download{" "}
+        
+        Download
       </Text>
     </Pressable>
   );

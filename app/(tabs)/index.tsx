@@ -16,7 +16,7 @@ export default function explore() {
     <SafeAreaView style={{ flex: 1 }}>
       <ParallaxScrollView
         headerImage={
-          <Image style={{ flex: 1 }} source={{ uri: wallpapers[0].url }} />
+          <Image style={{ flex: 1 }} source={{ uri: wallpapers[0]?.url ?? "" }} />
         }
         headerBackgroundColor={{ dark: "black", light: "white" }}
       >

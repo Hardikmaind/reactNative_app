@@ -1,5 +1,7 @@
+import Splitview from "@/components/Splitview";
+import { useLibraryWallpaper, useLikedWallpaper, useSuggestedWallpaper, useWallpaper } from "@/hooks/useWallpaper";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { SafeAreaView, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -14,24 +16,35 @@ export default function Foryou() {
 }
 
 function Library() {
+  const wallpaper=useLibraryWallpaper()
   return (
-    <View>
-      <Text>This is Home</Text>
+    <View style={styles.container}>
+      <Splitview wallpapers={wallpaper} />
     </View>
   );
 }
 
 function Liked() {
+  const wallpaper=useLikedWallpaper()
   return (
-    <View>
-      <Text>This is Profile </Text>
+    <View style={styles.container}>
+      <Splitview wallpapers={wallpaper} />
     </View>
   );
 }
 function Suggested() {
+  const wallpaper=useSuggestedWallpaper()
   return (
-    <View>
-      <Text>This is Suggested </Text>
+    <View style={styles.container}>
+      <Splitview wallpapers={wallpaper} />
     </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    backgroundColor:'black'
+  }
+});

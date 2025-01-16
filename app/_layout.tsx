@@ -10,8 +10,12 @@ export default function _layout() {
       {/* <Slot /> */}
       {/*  //! IF WE USED THE Stack OR Tabs, we dont have to explicitely specify the <Slot/> */}
       <Stack screenOptions={{ headerShown: false }}>
-        {/* //! HERE ABOVE I HAVE USED THE PROP WHICH HIDES THE HEADER */}
+        {/* //! HERE ABOVE I HAVE USED THE PROP WHICH HIDES THE HEADER  for all screen*/}
+
+
+        {/* i can add here multiple screen like below i have added. if want more i can add more with stack.screen tag.this basically helps to create screens(like pages,and routing is done by name attribute, and no here file base routing is not applicable since this is react navigation and it doesnt support the file based routing) */}
         <Stack.Screen name="(nobottombar)/accountInfo" options={{ headerShown: true,headerTitle:"My Account",headerBackTitle:"back", headerTitleAlign:"center" }} />
+        {/* //* here above if for particular screen i want header and header title i can add like this. */}
       </Stack>
     </GestureHandlerRootView>
   
