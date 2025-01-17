@@ -4,6 +4,7 @@ import {
   Button,
   View,
   Pressable,
+  Appearance,
   StyleSheet,
 } from "react-native";
 import React, { useCallback, useState } from "react";
@@ -12,6 +13,7 @@ import { useColorScheme } from "@/hooks/useColorScheme.web";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 
 export default function account() {
   const [pictureopen, SetPictureOpen] = useState(false);
@@ -26,11 +28,11 @@ export default function account() {
       //!Rename loginButtons to follow PascalCase: React components should use PascalCase (e.g., LoginButtons) to differentiate them from standard HTML or intrinsic JSX elements.
       //?Export LoginButtons if used across files: If LoginButtons is a standalone component, ensure it's exported for reuse.
       //*Update the usage: Replace <loginButtons /> with <LoginButtons /> to correctly reference the component. */}
-      <View style={{ flex: 1 }}>
+      <ThemedView style={{ flex: 1 }}>
         <LoginButtons/>
         <ThemeSelector/>
 
-      </View>
+      </ThemedView>
     </SafeAreaView>
   );
 }
@@ -43,10 +45,12 @@ type DownloadButtonProps = {
 // function DownloadButton({label,icon}: {label: string, icon: string}){}
 //! i can also define type of props like above or below. And above does not has a retunr type , so i can specify return type like below
 function AuthButton({ label, icon }: DownloadButtonProps): JSX.Element {
+  const theme = useColorScheme() ?? "light";
+
   return (
     <Pressable
       style={{
-        backgroundColor: "black",
+        backgroundColor: theme,
         padding: 10,
         marginVertical: 5,
         marginHorizontal: 40,
@@ -54,12 +58,14 @@ function AuthButton({ label, icon }: DownloadButtonProps): JSX.Element {
         justifyContent: "center",
         flexDirection: "row",
         gap: 4,
+        borderWidth: 1,
+        borderColor: theme === 'light' ? Colors.light.icon : Colors.dark.icon,
       }}
     >
       {icon}
-      <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>
+      <ThemedText style={{ fontSize: 20,  fontWeight: "bold" }}>
         {label}
-      </Text>
+      </ThemedText>
     </Pressable>
   );
 }
@@ -67,10 +73,10 @@ function AuthButton({ label, icon }: DownloadButtonProps): JSX.Element {
 function Header(): JSX.Element {
   
   return (
-    <View style={styles.topBar}>
-      <ThemedText style={styles.textBig}>Account</ThemedText>
+    <ThemedView style={styles.topBar}>
+      <ThemedText style={styles.textBig}>Panels</ThemedText>
       <ThemedText>Sign In to save your data</ThemedText>
-    </View>
+    </ThemedView>
   );
 }
 
@@ -94,7 +100,7 @@ const LoginButtons: React.FC  = ()=> {
         <Ionicons
           name="logo-apple"
           size={24}
-          color={theme === 'light' ? Colors.light.icon : Colors.dark.icon}
+          color={theme === 'light' ? Colors.light.text : Colors.dark.icon}
         />
       }
     />
@@ -104,7 +110,7 @@ const LoginButtons: React.FC  = ()=> {
         <Ionicons
           name="logo-google"
           size={24}
-          color={theme === 'light' ? Colors.light.icon : Colors.dark.icon}
+          color={theme === 'light' ? Colors.light.text : Colors.dark.icon}
         />
       }
     />
@@ -113,15 +119,15 @@ const LoginButtons: React.FC  = ()=> {
 
 
 function ThemeSelector(): JSX.Element {
-  return <View style={styles.margin}>
+  return <ThemedView style={styles.margin}>
       <ThemedText style={styles.textBig}>Settings</ThemedText>
       <ThemedText>Theme</ThemedText>
-      <View style={styles.themeSelectorContianer}>
+      <ThemedView style={styles.themeSelectorContianer}>
         <ThemeButton title={"Dark"} Selected={false}/>
         <ThemeButton title={"Light"} Selected={false}/>
         <ThemeButton title={"System"} Selected={false}/>
-      </View>
-  </View>
+      </ThemedView>
+  </ThemedView>
 }
 
 
@@ -134,13 +140,15 @@ function ThemeSelector(): JSX.Element {
 
 //* Below one can be written as above one, but below one is more readable
 
-function ThemeButton({ title, Selected }: { title: string; Selected: boolean }): JSX.Element {
-  return  <Pressable style={{padding:10,borderColor:"black",borderWidth:1,borderRadius:5,flex:0.3,justifyContent:"center",alignItems:"center",backgroundColor:Selected?"black":"white"}}>
+function ThemeButton({ title, Selected }: { title: string |"dark" |"light"| any; Selected: boolean }): JSX.Element {
+  const theme = useColorScheme() ?? "light";
+
+  return  <Pressable style={{padding:10,borderWidth:1,borderRadius:5,flex:0.3,justifyContent:"center",alignItems:"center",borderColor:theme==='light'?Colors.light.text:Colors.dark.text}} onPress={()=>{Appearance.setColorScheme(title.toLowerCase())}}>
             <ThemedText style={{width:"100%",textAlign:"center"}}>{title}</ThemedText>
         </Pressable>
  
 }
-
+ 
 
 const styles = StyleSheet.create({
   textBig: {
@@ -149,7 +157,7 @@ const styles = StyleSheet.create({
   },
   topBar: {
     padding: 20,
-    margin: 10,
+    // margin: 10,
   },
   themeSelectorContianer:{
     flexDirection:"row",
